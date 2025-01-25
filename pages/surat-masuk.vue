@@ -23,7 +23,7 @@
               id="jenis_surat"
               :options="jenisSuratOption"
               v-model="jenisSurat"
-              @change="handlePerPageChange"
+              @update:model-value="handleChangeJenisSurat"
             >
               <option
                 v-for="(option, idx) in jenisSuratOption"
@@ -48,8 +48,8 @@
             class="block w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
             id="perpage_select"
             :options="perpageOption"
-            v-model="perPage as any"
-            @change="handlePerPageChange"
+            v-model:model-value="perPage"
+            @update:model-value="handlePerPageChange"
           >
             <option
               v-for="(option, idx) in perpageOption"
@@ -93,7 +93,6 @@
           :total-datas="suratMasukStore.totalDatas"
           :per-page="suratMasukStore.perPage"
           @page-change="handlePageChange"
-          @perpage-change="handlePerPageChange"
         />
 
         <div class="flex gap-3">
@@ -145,8 +144,7 @@ const jenisSuratOption = [
   { label: "15 Entries", value: 15 },
 ];
 
-const { totalDatas } = storeToRefs(suratMasukStore);
-const perPage = ref(5);
+const { totalDatas, perPage } = storeToRefs(suratMasukStore);
 const jenisSurat = ref("default");
 
 const actions = [
@@ -177,9 +175,12 @@ const handlePageChange = (page: any) => {
   loadData();
 };
 
-const handlePerPageChange = (value: any) => {
-  console.log(value);
+const handleChangeJenisSurat = (value: any) => {
+  jenisSurat.value = value;
+  loadData();
+};
 
+const handlePerPageChange = (value: any) => {
   suratMasukStore.perPage = value;
   loadData();
 };

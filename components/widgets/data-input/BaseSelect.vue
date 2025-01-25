@@ -27,7 +27,7 @@ import { ref, defineProps, defineEmits, watch } from "vue";
 
 // Props untuk menerima data dari parent
 const props = defineProps({
-  modelValue: String, // Nilai terpilih
+  modelValue: [String, Number], // Nilai terpilih
   options: {
     type: Array,
     required: true,
@@ -85,7 +85,7 @@ const baseClass = computed(() => {
 const emit = defineEmits(["update:modelValue"]);
 
 // State lokal untuk nilai terpilih
-const selectedValue = ref("");
+const selectedValue = ref(props.modelValue);
 
 // Sinkronkan nilai modelValue dengan selectedValue
 watch(

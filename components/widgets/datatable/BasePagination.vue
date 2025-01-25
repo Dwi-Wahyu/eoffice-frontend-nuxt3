@@ -62,14 +62,6 @@
 <script setup>
 import { computed, defineProps, defineEmits } from "vue";
 
-import BaseSelect from "../data-input/BaseSelect.vue";
-
-const defaultOption = [
-  { label: "5", value: 5 },
-  { label: "10", value: 10 },
-  { label: "15", value: 15 },
-];
-
 const props = defineProps({
   modelValue: Number,
   currentPage: {
@@ -100,11 +92,7 @@ watch(
   { immediate: true }
 );
 
-const handleChange = () => {
-  emit("perpage-change", selectedValue.value);
-};
-
-const emit = defineEmits(["page-change", "perpage-change"]);
+const emit = defineEmits(["page-change"]);
 // Generate array of pages
 
 // Generate visible pages with ellipsis
