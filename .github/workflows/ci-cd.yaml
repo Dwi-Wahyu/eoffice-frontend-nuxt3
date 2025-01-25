@@ -1,0 +1,51 @@
+name: CI/CD - EOFFICE Frontend
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: [10, 22]
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npx vitest
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: [10, 22]
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
