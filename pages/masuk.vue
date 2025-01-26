@@ -19,6 +19,7 @@
         <div class="text-center">
           <h1 class="font-bold text-2xl mb-2">Login</h1>
           <h1>{{ authStore.welcomeDesc }}</h1>
+          <h1>halo</h1>
         </div>
         <div class="mt-4 flex flex-col gap-4">
           <BaseInput

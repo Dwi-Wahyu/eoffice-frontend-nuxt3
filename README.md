@@ -23,3 +23,9 @@ tar xzf ./actions-runner-linux-x64-2.321.0.tar.gz
 ```
 pm2 start "./run.sh" --name eoffice-runner
 ```
+
+## Cek jika runner berjalan
+
+```
+pm2 status
+```
