@@ -111,9 +111,9 @@
     </WidgetsCardBaseCard>
 
     <WidgetsCardBaseCard add-class="flex-col">
-      <h1>Isi Surat*</h1>
+      <h1 class="mb-2">Isi Surat*</h1>
 
-      <WidgetsEditorTiptapEditor :model-value="isiSurat" />
+      <WidgetsEditorQuillEditor @editor-content="handleEditorContent" />
     </WidgetsCardBaseCard>
   </div>
 </template>
@@ -137,6 +137,10 @@ const klasifikasi_masalah = ref("");
 const tanggal = ref("");
 
 const isiSurat = ref("Ini isi surat default");
+
+const handleEditorContent = (content) => {
+  isiSurat.value = content;
+};
 
 definePageMeta({
   layout: "default",

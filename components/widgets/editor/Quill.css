@@ -1,0 +1,38 @@
+#editor {
+  height: 400px;
+}
+
+/* Style untuk container editor */
+.ql-container {
+  border-bottom-left-radius: 12px; /* Border radius kiri bawah */
+  border-bottom-right-radius: 12px; /* Border radius kanan bawah */
+  border: 1px solid #ccc; /* Border untuk container */
+  background-color: #fff; /* Warna latar belakang editor */
+}
+
+/* Style untuk editor */
+.ql-editor {
+  font-size: 1rem; /* Sesuaikan ukuran font */
+  border-bottom-left-radius: 12px; /* Border radius kiri bawah */
+  border-bottom-right-radius: 12px; /* Border radius kanan bawah */
+}
+
+/* Style untuk toolbar */
+.ql-toolbar {
+  border-top-left-radius: 12px; /* Border radius kiri atas */
+  border-top-right-radius: 12px; /* Border radius kanan atas */
+  border-bottom: 3px solid #ccc; /* Border bottom lebih tebal */
+  background-color: #f8f9fa; /* Warna latar belakang toolbar */
+  padding: 8px; /* Padding untuk toolbar */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow */
+}
+
+/* Jarak antara grup ikon */
+.ql-toolbar .ql-formats {
+  margin-right: 15px;
+}
+
+/* Jarak antara ikon dalam grup yang sama */
+.ql-toolbar button {
+  margin-right: 8px;
+}

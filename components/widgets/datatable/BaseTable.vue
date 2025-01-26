@@ -50,6 +50,13 @@
                   class="max-w-40"
                 />
               </div>
+              <div v-if="value.includes('tooltip')">
+                <div
+                  class="bg-[#B346501A] w-fit text-[#B34650] rounded-full px-2 py-1"
+                >
+                  {{ row[value.split(":")[2]] }}
+                </div>
+              </div>
               <div v-if="!value.includes('img')">
                 <span v-html="truncateHtml(row[value], 200)"></span>
               </div>
@@ -97,7 +104,6 @@
             <div
               class="text-center rounded-[8px] p-4 text-danger bg-red-100 font-bold text-base"
             >
-              {{ loading }}
               <h1 v-if="!loading">Tidak Ada Data Yang Di Temukan</h1>
               <h1 v-if="loading">Tunggu Sejenak</h1>
             </div>
