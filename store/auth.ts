@@ -1,10 +1,18 @@
 import { defineStore } from "pinia";
 import { useAxios } from "@/composables/useAxios";
+
 interface ErrorData {
   msg: string;
   data: any;
   status: string;
 }
+
+type User = {
+  id?: string;
+  username: string;
+  name: string;
+};
+
 export const useMyAuthStore = defineStore("myAuthStore", {
   state: () => ({
     orgName: "Pemerintah Kabupaten Luwu Timur",
@@ -15,69 +23,47 @@ export const useMyAuthStore = defineStore("myAuthStore", {
     welcomeDesc:
       "Silahkan masukkan Username dan Password untuk masuk ke Aplikasi.",
     token: "",
-    user: null,
+    user: null as User | null,
     alwaysLogin: false,
     error: false,
     error_data: null as ErrorData | null,
   }),
-  persist: true,
+  persist: true, // Opsi untuk plugin persist
   actions: {
     async login(credentials: {
-      email: string;
+      username: string;
       password: string;
-      alwaysLogin: any;
+      alwaysLogin: boolean;
     }) {
       this.error = false;
       this.error_data = null;
       const axios = useAxios();
 
       return new Promise((resolve, reject) => {
-        axios
-          .post("/auth/login", credentials)
-          .then((response) => {
-            // this.me()
-            this.alwaysLogin = credentials.alwaysLogin;
-            console.log(response.data);
-            this.token = response.data.access_token;
-            resolve(resolve);
-          })
-          .catch((error: any) => {
-            console.log(error.response.data);
-            this.error = true;
-            this.error_data = error.response.data;
-            reject(error);
-          });
-      });
-    },
-    async me() {
-      const axios = useAxios();
+        const { username, password } = credentials;
 
-      return new Promise((resolve, reject) => {
-        axios
-          .post("/auth/me")
-          .then((response) => {
-            this.user = response.data;
-            resolve(resolve);
-          })
-          .catch((error: any) => {
-            reject(error);
-          });
-      });
-    },
-    async refresh() {
-      const axios = useAxios();
+        if (username == "superadmin" && password == "secret") {
+          this.token = "lkajwflkwjefklajfkljoiafjoe";
+          this.alwaysLogin = credentials.alwaysLogin;
+          this.user = { username: "superadmin", name: "admin" };
+          resolve("success");
+        } else {
+          reject(new Error("Invalid credentials"));
+        }
 
-      return new Promise((resolve, reject) => {
-        axios
-          .post("/auth/refresh")
-          .then((response) => {
-            // this.user = response.data
-            this.token = response.data.access_token;
-            resolve(resolve);
-          })
-          .catch((error: any) => {
-            reject(error);
-          });
+        // Jika menggunakan axios:
+        // axios
+        //   .post("/auth/login", credentials)
+        //   .then((response) => {
+        //     this.alwaysLogin = credentials.alwaysLogin;
+        //     this.token = response.data.access_token;
+        //     resolve(response);
+        //   })
+        //   .catch((error: any) => {
+        //     this.error = true;
+        //     this.error_data = error.response.data;
+        //     reject(error);
+        //   });
       });
     },
   },

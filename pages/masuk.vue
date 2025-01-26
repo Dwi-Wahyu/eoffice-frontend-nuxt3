@@ -24,23 +24,28 @@
           <BaseInput
             add-class="shadow-inner"
             label="Username"
+            v-model="username"
             id="username"
             placeholder="Masukkan Username Anda"
           />
 
-          <BaseInput label="Password" placeholder="Masukkan Password Anda" />
+          <BaseInput
+            label="Password"
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Masukkan Password Anda"
+          />
           <div class="grid grid-cols-2 gap-2">
-            <BaseInput
-              label="Kode Captcha"
-              id="password"
-              placeholder="Masukkan Kode"
-            />
+            <BaseInput label="Kode Captcha" placeholder="Masukkan Kode" />
             <div class="flex items-end">
               <img src="/captcha-example.png" alt="" />
             </div>
           </div>
           <div class="flex justify-center mt-3">
-            <BaseButton type="submit" class="rounded-full">Login</BaseButton>
+            <BaseButton @click="handleLogin" type="submit" class="rounded-full">
+              Login
+            </BaseButton>
           </div>
         </div>
       </div>
@@ -59,7 +64,21 @@ definePageMeta({
 
 const authStore = useMyAuthStore();
 
-onMounted(() => {
-  navigateTo("/dashboard");
-});
+const username = ref("");
+const password = ref("");
+
+function handleLogin() {
+  const payload = { username: username.value, password: password.value };
+
+  authStore
+    .login(payload)
+    .then((value) => {
+      if (value == "success") {
+        navigateTo("/dashboard");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 </script>

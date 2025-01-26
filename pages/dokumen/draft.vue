@@ -1,30 +1,26 @@
 <template>
   <div class="mt-20 flex flex-col mb-10 gap-5 w-full">
     <WidgetsCardBaseCard add-class="flex flex-col">
-      <WidgetsEditorQuillEditor @editor-content="handleEditorContent" />
+      <WidgetsButtonBaseButton add-class="rounded-lg" @click="toggleModal">
+        Toggle Modal
+      </WidgetsButtonBaseButton>
     </WidgetsCardBaseCard>
 
-    <WidgetsCardBaseCard>
-      <div v-if="editorContent">
-        <h3>Editor Content:</h3>
-        <div v-html="editorContent"></div>
-        {{ editorContent }}
-      </div>
-    </WidgetsCardBaseCard>
+    <WidgetsPopupModal v-if="showModal" @close="toggleModal">
+      <h1>halo</h1>
+    </WidgetsPopupModal>
   </div>
 </template>
 
 <script setup>
-import "~/components/widgets/editor/Quill.css";
+const showModal = ref(false);
+
+function toggleModal() {
+  showModal.value = !showModal.value;
+}
 
 definePageMeta({
   layout: "default",
   middleware: "auth",
 });
-
-const editorContent = ref("");
-
-const handleEditorContent = (content) => {
-  editorContent.value = content;
-};
 </script>

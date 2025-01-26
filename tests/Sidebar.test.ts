@@ -1,6 +1,6 @@
 import { it, expect, test, describe, beforeEach } from "vitest";
-import { useMySidebarStore } from "~/store/sidebar";
 import { createPinia, setActivePinia } from "pinia";
+import { useMySidebarStore } from "~/store/sidebar";
 
 describe("Periksa Aksi Sidebar", () => {
   beforeEach(() => {
