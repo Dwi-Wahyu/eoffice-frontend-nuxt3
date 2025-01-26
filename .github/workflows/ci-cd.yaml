@@ -51,4 +51,4 @@ jobs:
         run: npm run build
 
       - name: Run App
-        run: pm2 start "npm run start" --name eoffice
+        run: pm2 start "npm run preview" --name eoffice
