@@ -56,5 +56,8 @@ jobs:
       - name: Cek versi pm2
         run: pm2 -V
 
+      - name: Stop existing application
+        run: pm2 stop eoffice || true
+
       - name: Run App
-        run: pm2 start "npm run preview" --name eoffice
+        run: pm2 start "node .output/server/index.mjs" --name eoffice

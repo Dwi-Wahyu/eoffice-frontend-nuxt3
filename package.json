@@ -8,9 +8,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test:unit": "npx vitest",
     "test:e2e": "npx cypress run",
-    "test": "npm run test:unit && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:e2e",
+    "start": "nuxt-start"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^3.15.4",
