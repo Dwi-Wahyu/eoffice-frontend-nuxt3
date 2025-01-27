@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/global.css"],
   app: {
     head: {
-      title: "eData Desa Garing",
+      title: "eoffice",
       htmlAttrs: {
         lang: "en",
       },

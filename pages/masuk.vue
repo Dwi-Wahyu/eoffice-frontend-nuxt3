@@ -74,7 +74,7 @@ function handleLogin() {
     .login(payload)
     .then((value) => {
       if (value == "success") {
-        navigateTo("/dashboard");
+        navigateTo("/");
       }
     })
     .catch((error) => {
