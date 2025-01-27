@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full bg-[#F5F7F8] h-full">
-    <div class="fixed z-10 bg-primary top-0 left-0 h-28 w-full"></div>
+    <div class="fixed z-10 bg-primary top-0 left-0 h-32 w-full"></div>
 
     <div class="flex flex-row absolute top-0 z-20 left-0 w-full h-auto">
       <div

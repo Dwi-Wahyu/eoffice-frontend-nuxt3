@@ -23,7 +23,7 @@ export const menuItems: MenuItem[] = [
     title: "Dashboard",
     icon: "dashboard-active",
     icon2: "dashboard-inactive",
-    route: "/dashboard",
+    route: "/",
     child: [],
     roles: [],
     type: "parent",

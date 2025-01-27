@@ -5,8 +5,8 @@ export const useMySidebarStore = defineStore("mySidebarStore", {
   state: () => ({
     appName: "eData Garing",
     menu: menuItems,
-    parentActive: "/dashboard",
-    linkActive: "/dashboard",
+    parentActive: "/",
+    linkActive: "/",
     sidebarActive: true,
   }),
   actions: {
