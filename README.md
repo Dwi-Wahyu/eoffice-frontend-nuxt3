@@ -17,7 +17,7 @@ tar xzf ./actions-runner-linux-x64-2.321.0.tar.gz
 ```
 
 ```
-./config.sh --url https://github.com/Dwi-Wahyu/eoffice-frontend-nuxt3 --token AXJ7H5VXD7SOY33JCI4MEW3HS2HIU
+./config.sh --url https://github.com/Dwi-Wahyu/eoffice-frontend-nuxt3 --token AXJ7H5T3FKGE4ET7HW5AH4DHS446M
 ```
 
 ```
