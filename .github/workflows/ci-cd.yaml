@@ -34,7 +34,7 @@ jobs:
         run: npm install pm2@latest -g
 
       - name: Stop existing application
-        run: pm2 stop eoffice || true
+        run: pm2 stop "ecosystem.config.cjs"
 
       - name: Run App
         run: pm2 start "ecosystem.config.cjs"
